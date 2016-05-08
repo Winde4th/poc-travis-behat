@@ -1,0 +1,6 @@
+{
+  "require": {
+    "drupal/drupal-extension": "~3.1",
+    "drush/drush": "dev-master"
+  }
+}

@@ -1,0 +1,5 @@
+/composer.lock
+/html
+/vendor
+/behat_demo.sqlite
+/.idea
