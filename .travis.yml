@@ -26,9 +26,9 @@ before_script:
   - cd htdocs
   - drush si -y standard --db-url=mysql://root:@localhost/drupal --account-name=admin --account-pass=admin --site-name="Poc TravisCI Behat"
 
- # Start Web server
- - drush runserver 8888 > /dev/null 2>&1 &
- - until ss -l 2>/dev/null | grep 'LISTEN.*8888'; do true; done
+  # Start Web server
+  - drush runserver 8888 > /dev/null 2>&1 &
+  - until ss -l 2>/dev/null | grep 'LISTEN.*8888'; do true; done
 
 script:
   - $BASEDIR/vendor/bin/behat
