@@ -2,7 +2,6 @@ default:
   suites:
     default:
       contexts:
-        - DrupencyContext
         - Drupal\DrupalExtension\Context\MinkContext
   extensions:
     Behat\MinkExtension:
