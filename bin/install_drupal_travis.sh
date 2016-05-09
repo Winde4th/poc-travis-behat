@@ -17,4 +17,4 @@ DRUPAL_ROOT="$PARENT_PATH/html"
 # up one of these for you by default.
 #
 cd "$DRUPAL_ROOT"
-drush si -y standard --db-url=mysql://dbusr:dbpwd@mysql/db --account-name=admin --account-pass=admin --site-name="Poc TravisCI Behat"
+drush si -y standard --db-url=mysql://root@localhost/drupal --account-name=admin --account-pass=admin --site-name="Poc TravisCI Behat"

@@ -9,7 +9,7 @@
 rm -rf html
 $BASEDIR/vendor/bin/drush make -y --force-complete drupal.make html
 cd html
-$BASEDIR/vendor/bin/drush si -y standard --db-url=mysql://dbusr:dbpwd@mysql/db --account-name=admin --account-pass=admin --site-name="Poc TravisCI Behat"
+$BASEDIR/vendor/bin/drush si -y standard --db-url=mysql://root@localhost/drupal --account-name=admin --account-pass=admin --site-name="Poc TravisCI Behat"
 
 # We might do the same thing with drush quick-drupal
 # drush -y core-quick-drupal --profile=standard --makefile=drupal.make --db-url=mysql://root@localhost/drupal --core=drupal-7.x behat_demo devel --browser=0 --no-server --root=html --account-name=admin --account-pass=admin
