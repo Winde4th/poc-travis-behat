@@ -1,15 +1,20 @@
 #!/bin/bash
 
+SELF_DIRNAME="`dirname -- "$0"`"
+PARENT_PATH="`cd -P -- "$SELF_DIRNAME/.." && pwd -P`"
+DRUPAL_ROOT="$PARENT_PATH/html"
+
+#
+# This script assumes that you have customized this
+# project and moved it into your own Drupal project,
+# following the instructions in the README file.
+# You may need to edit the paths given here if
+# your layout is different than what was used in the example.
 #
 # Build an instance of Drupal using mysql.
 # This assumes that you have a mysql user
 # 'root' with no password.  Travis sets
 # up one of these for you by default.
 #
-rm -rf html
-$BASEDIR/vendor/bin/drush make -y --force-complete drupal.make html
-cd html
-$BASEDIR/vendor/bin/drush si -y standard --db-url=mysql://dbusr:dbpwd@mysql/db --account-name=admin --account-pass=admin --site-name="Poc TravisCI Behat"
-
-# We might do the same thing with drush quick-drupal
-# drush -y core-quick-drupal --profile=standard --makefile=drupal.make --db-url=mysql://root@localhost/drupal --core=drupal-7.x behat_demo devel --browser=0 --no-server --root=html --account-name=admin --account-pass=admin
+cd "$DRUPAL_ROOT"
+drush si -y standard --db-url=mysql://dbusr:dbpwd@mysql/db --account-name=admin --account-pass=admin --site-name="Poc TravisCI Behat"
