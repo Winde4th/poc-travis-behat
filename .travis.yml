@@ -23,7 +23,8 @@ install:
 
 before_script:
   - echo "sendmail_path='true'" >> `php --ini | grep "Loaded Configuration" | awk '{print $4}'`
-  - ./bin/install_drupal_travis.sh
+  # - ./bin/install_drupal_travis.sh
+  - drush si -y standard --db-url=mysql://root:@localhost/drupal --account-name=admin --account-pass=admin --site-name="Poc TravisCI Behat"
   - cd htdocs
   - $BASEDIR/vendor/bin/drush runserver --server=builtin 8080 --strict=0 &
   - cd ..
