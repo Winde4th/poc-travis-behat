@@ -33,9 +33,7 @@ before_script:
 
 script:
   # Build Behat dependencies
-  - composer install --no-interaction --prefer-dist
-  - export BEHAT_PARAMS='{"extensions":{"Drupal\\DrupalExtension":{"drupal":{"drupal_root":"$BASEDIR/htdocs"}}}}'
+  - export BEHAT_PARAMS='{"extensions":{"Drupal\\DrupalExtension":{"drupal":{"drupal_root":"/home/travis/build/Winde4th/poc-travis-behat/htdocs"}}}}'
 
   # Run Behat tests
   - $BASEDIR/bin/behat --config behat.travis.yml
-  # - $BASEDIR/vendor/bin/behat
