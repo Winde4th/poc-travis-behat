@@ -15,11 +15,11 @@ install:
   - phpenv rehash
   - composer install
 
- # Install latest Drush 7.
- - export PATH="$HOME/.composer/vendor/bin:$PATH"
- - composer config -g github-oauth.github.com 0784033b344a0ea024d9ee324218b3c2eb0da985
- - composer global require --no-interaction --prefer-dist drush/drush:7.*
- - drush cc drush
+  # Install latest Drush 7.
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - composer config -g github-oauth.github.com 0784033b344a0ea024d9ee324218b3c2eb0da985
+  - composer global require --no-interaction --prefer-dist drush/drush:7.*
+  - drush cc drush
 
 before_script:
   - echo "sendmail_path='true'" >> `php --ini | grep "Loaded Configuration" | awk '{print $4}'`
