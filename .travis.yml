@@ -28,7 +28,14 @@ before_script:
 
   # Start Web server
   - drush runserver 8888 > /dev/null 2>&1 &
+  - cd ..
   - until ss -l 2>/dev/null | grep 'LISTEN.*8888'; do true; done
 
 script:
-  - $BASEDIR/vendor/bin/behat
+  # Build Behat dependencies
+  - composer install --no-interaction --prefer-dist
+  - export BEHAT_PARAMS="extensions[Drupal\\DrupalExtension\\Extension][drupal][drupal_root]=$BASEDIR/htdocs"
+
+  # Run Behat tests
+  - $BASEDIR/bin/behat --config behat.travis.yml
+  # - $BASEDIR/vendor/bin/behat
