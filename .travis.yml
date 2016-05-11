@@ -9,14 +9,18 @@ mysql:
 
 before_install:
   - composer self-update
+
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - export BASEDIR=${PWD}
+  - export BEHAT_PARAMS='{"extensions":{"Drupal\\DrupalExtension":{"drupal":{"drupal_root":"'$BASEDIR'/htdocs"}}}}'
 
 install:
   - phpenv rehash
+
+  # Build Behat dependencies
   - composer install
 
   # Install latest Drush 7.
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - composer config -g github-oauth.github.com 0784033b344a0ea024d9ee324218b3c2eb0da985
   - composer global require --no-interaction --prefer-dist drush/drush:7.*
   - drush cc drush
@@ -32,8 +36,5 @@ before_script:
   - until ss -l 2>/dev/null | grep 'LISTEN.*8888'; do true; done
 
 script:
-  # Build Behat dependencies
-  - export BEHAT_PARAMS='{"extensions":{"Drupal\\DrupalExtension":{"drupal":{"drupal_root":"/home/travis/build/Winde4th/poc-travis-behat/htdocs"}}}}'
-
   # Run Behat tests
   - $BASEDIR/bin/behat --config behat.travis.yml
