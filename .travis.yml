@@ -15,8 +15,6 @@ before_install:
   - export BEHAT_PARAMS='{"extensions":{"Drupal\\DrupalExtension":{"drupal":{"drupal_root":"'$BASEDIR'/htdocs"}}}}'
 
 install:
-  - phpenv rehash
-
   # Build Behat dependencies
   - composer install
 
@@ -26,7 +24,6 @@ install:
   - drush cc drush
 
 before_script:
-  - echo "sendmail_path='true'" >> `php --ini | grep "Loaded Configuration" | awk '{print $4}'`
   - cd htdocs
   - drush si -y standard --db-url=mysql://root:@localhost/drupal --account-name=admin --account-pass=admin --site-name="Poc TravisCI Behat"
 
