@@ -20,3 +20,10 @@ Feature: Homepage
     When I click "Log out"
     Then I should be on the homepage
     And I should see "User login"
+
+  Scenario: Submit connection
+    Given I am on the homepage
+    When I fill in "edit-name" with "admin"
+    And I fill in "edit-pass" with "test"
+    And press "Log in"
+    Then I should see "Sorry, unrecognized username or password"
