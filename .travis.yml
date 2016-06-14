@@ -35,3 +35,8 @@ before_script:
 script:
   # Run Behat tests
   - $BASEDIR/bin/behat --config behat.travis.yml
+
+notifications:
+ slack:
+   rooms:
+     - actency:aZt1XDKinCaYrWT7oEeEmtY4#travis
