@@ -1,5 +1,6 @@
-/composer.lock
+/htdocs/test/behat/composer.lock
 /html
-/vendor
+/htdocs/test/behat/vendor
+/htdocs/test/behat/bin
 /behat_demo.sqlite
 /.idea
