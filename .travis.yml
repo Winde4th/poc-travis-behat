@@ -34,7 +34,8 @@ before_script:
 
 script:
   # Run Behat tests
-  - $BASEDIR/bin/behat --config behat.travis.yml
+  - cd $BASEDIR/test/behat
+  - bin/behat --config behat.travis.yml
 
 notifications:
  slack:
