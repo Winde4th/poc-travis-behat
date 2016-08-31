@@ -16,7 +16,9 @@ before_install:
 
 install:
   # Build Behat dependencies
+  - cd $BASEDIR/htdocs/test/behat
   - composer install
+  - cd $BASEDIR
 
   # Install latest Drush 7.
   - composer config -g github-oauth.github.com 0784033b344a0ea024d9ee324218b3c2eb0da985
@@ -29,9 +31,14 @@ before_script:
 
   # Start Web server
   - drush runserver 8888 > /dev/null 2>&1 &
-  - cd ..
   - until ss -l 2>/dev/null | grep 'LISTEN.*8888'; do true; done
 
 script:
   # Run Behat tests
-  - $BASEDIR/bin/behat --config behat.travis.yml
+  - cd test/behat
+  - ./bin/behat --config behat.travis.yml
+
+notifications:
+ slack:
+   rooms:
+     - actency:aZt1XDKinCaYrWT7oEeEmtY4#travis

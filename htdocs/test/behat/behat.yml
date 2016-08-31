@@ -9,11 +9,11 @@ default:
     Behat\MinkExtension:
       goutte: ~
       selenium2: ~
-      base_url: http://localhost:8080
+      base_url: http://192.168.99.100
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'
       drush:
         alias: 'local'
-      drupal: 
-        drupal_root: './html'
+      drupal:
+        drupal_root: '../..'
